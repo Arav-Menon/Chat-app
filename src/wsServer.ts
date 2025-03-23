@@ -1,9 +1,9 @@
-import { WebSocketServer } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 
 const wss = new WebSocketServer({ port : 8080 });
 
 let userCount = 0;
-let allSockets = [];
+let allSockets : WebSocket[] = [];
 
 wss.on('connection', (socket) => {
 
@@ -20,5 +20,11 @@ wss.on('connection', (socket) => {
         }
         console.log(mesaage.toString())
     })
+
+    socket.on('disconnet', () => {
+
+      allSockets = allSockets.filter(x => x != socket)  
+
+    }) 
 
 } ) 
