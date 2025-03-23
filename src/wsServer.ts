@@ -7,7 +7,7 @@ let allSockets = [];
 
 wss.on('connection', (socket) => {
 
-    allSockets.push(socket);
+    allSockets.push(socket)
 
     socket.on('message', (mesaage) => {
   
